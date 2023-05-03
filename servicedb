@@ -1,0 +1,30 @@
+INSERT INTO service.users(full_name,login,password)
+SELECT
+  (
+    CASE (RANDOM() * 2)::INT
+      WHEN 0 THEN 'петя'
+      WHEN 1 THEN 'вася'
+      WHEN 2 THEN 'саша'
+    END
+  ) AS full_name,
+    (
+    CASE (RANDOM() * 2)::INT
+      WHEN 0 THEN 'f'
+      WHEN 1 THEN 'c'
+      WHEN 2 THEN 'd'
+    END || 
+		CASE (RANDOM() * 2)::INT
+      WHEN 0 THEN 'f'
+      WHEN 1 THEN 'c'
+      WHEN 2 THEN 'd'
+    END
+  )  AS login,
+ 	 (
+    CASE (RANDOM() * 3)::INT
+      WHEN 0 THEN '1'
+      WHEN 1 THEN '12'
+      WHEN 2 THEN '123'
+	  WHEN 3 THEN '1234'
+    END
+  )  AS password
+FROM GENERATE_SERIES(1, 20);
