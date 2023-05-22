@@ -18,6 +18,11 @@ SELECT
       WHEN 0 THEN 'f'
       WHEN 1 THEN 'c'
       WHEN 2 THEN 'd'
+    END ||
+		CASE (RANDOM() * 2)::INT
+      WHEN 0 THEN 'f'
+      WHEN 1 THEN 'c'
+      WHEN 2 THEN 'd'
     END
   )  AS login,
  	 (
@@ -28,4 +33,4 @@ SELECT
 	  WHEN 3 THEN '1234'
     END
   )  AS password
-FROM GENERATE_SERIES(1, 20);
+FROM GENERATE_SERIES(1, 10);
